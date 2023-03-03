@@ -12,7 +12,7 @@
 FPS의 원조라 할 수 있는 울펜슈타인3D 게임이 만들어진 과정을, 개발 관점에서 시시콜콜하게 파헤쳐 주는군요. 음... 그러니까 예상보다도 더 시시콜콜하게!
 
 $$
-\begin{array}{l} \text{SX} \;:\; \text{SY} \;=\; \text{FOV}_{\text{H}} \;:\; \text{FOV}_{\text{V}} \\ \displaystyle \therefore \; \text{FOV}_{\text{V}} \;=\; \frac{\text{SY}}{\text{SX}}\cdot \text{FOV}_{\text{H}} \end{array}
+\begin{array}{l} \text{SX} \ :\  \text{SY} \ =\  \text{FOV}_{\text{H}} \ :\  \text{FOV}_{\text{V}} \\\\ \displaystyle \therefore \  \text{FOV}_{\text{V}} \ =\  \frac{\text{SY}}{\text{SX}}\cdot \text{FOV}_{\text{H}} \end{array}
 $$
 
 
