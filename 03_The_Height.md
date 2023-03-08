@@ -147,13 +147,13 @@ draw_wall( void* gr, double wdist, int x, int color )
 
 이렇게 해서 정말 벽이 그려지냐고요? 맵의 가운데 공간만 조금 늘리고 이리저리 위치를 바꿔가며 이 코드를 실행시킨 스크린샷이 아래에 있습니다.
 
-<img src="images/_2021-01-26__3.26.25.png" width="20%" height="20%">
+<img src="images/_2021-01-26__3.26.25.png" width="50%" height="50%">
 
-<img src="images/_2021-01-26__3.26.49.png" width="20%" height="20%">
+<img src="images/_2021-01-26__3.26.49.png" width="50%" height="50%">
 
-<img src="images/_2021-01-26__3.27.46.png" width="20%" height="20%">
+<img src="images/_2021-01-26__3.27.46.png" width="50%" height="50%">
 
-<img src="images/_2021-01-26__4.28.46.png" width="20%" height="20%">
+<img src="images/_2021-01-26__4.28.46.png" width="50%" height="50%">
 
 # 거리 보정
 
@@ -163,11 +163,11 @@ draw_wall( void* gr, double wdist, int x, int color )
 
 하지만 우리는 벽을 '화면'에 나타내야 하므로, 한 점에서 떨어진 거리가 아니라 (시선방향에 수직인) 평면과 벽 사이의 거리를 잴 필요가 있습니다. 이것이 오른쪽 그림에서 말하는 내용입니다.
 
-![](/perpdir.png)
+![](images/perpdir.png)
 
 그렇다면 삐딱하게 계산된 거리를 바로잡을 방법은 무엇일까요? 여기서 다시 삼각비를 써먹습니다. 아래 그림처럼 어떤 빛줄기에 대해 계산된 거리를 *l* , 실제로 화면에 나타내야 할 거리(빨간색)를 *m* 이라고 하죠. 그러면 회색 빛줄기가 시선방향에 대해 벌어진 각도를 β 라고 할 때, '코사인'의 정의에 의해 아래와 같은 (다행히도 간단한) 관계가 성립합니다.
 
-![](/perp_correction.png)
+![](images/perp_correction.png)
 
 그러므로, 우리가 할 일은 계산된 거리 `wdist` 에다가 현재 레이의 벌어진 각도의 코사인 값 cos β 를 곱해 주는 것 뿐입니다. 와우!
 
@@ -189,9 +189,9 @@ cast_single_ray( int x, double px, double py, double th, dir_t* pdir )
 
 그 결과는 아래와 같습니다. 아까 것과 비교해 보죠. 코사인 하나 곱했을 뿐인데...
 
-<img src="images/_2021-01-26__5.22.50.png" width="20%" height="20%">
+<img src="images/_2021-01-26__5.22.50.png" width="50%" height="50%">
 
-<img src="images/_2021-01-26__5.23.15.png" width="20%" height="20%">
+<img src="images/_2021-01-26__5.23.15.png" width="50%" height="50%">
 
 다음 글에서는 키보드로 플레이어의 위치와 방향을 바꿔 가면서 다이나믹하게 화면을 그려 보겠습니다.
 

@@ -1,12 +1,8 @@
 # Ray-casting 7: The Sprite
 
-~ Joongbin's [Math Reboot](https://blog.insightbook.co.kr/2020/07/01/《수학-리부트-프로그래머를-위한-기초-수학》/) on Notion ~
+~ Joongbin's [Math Reboot](https://blog.insightbook.co.kr/2020/07/01/《수학-리부트-프로그래머를-위한-기초-수학》/) ~
 
-~ [삼각함수, 벡터 관련 유튜브 강의 클립!](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
-
-![            [이노베이션아카데미](https://innovationacademy.kr)](innoaca_logo_1.png)
-
-            [이노베이션아카데미](https://innovationacademy.kr)
+~ [삼각함수, 벡터 관련 유튜브 강의 클립](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
 
 물통이나 기둥 같은 아이템, 적군 병사 등을 그리는 데 쓰이는 스프라이트는 여러가지 면에서 벽과 비슷합니다. 맵에서 셀 하나를 차지하는 것도 그렇고, 화면에서 벽 높이가 거리에 따라 정해지는 것처럼 스프라이트의 높이(와 너비)도 거리에 따라 정해집니다. 하지만 차이점도 있습니다.
 
@@ -43,7 +39,7 @@
 
 시야 범위를 알아내려면 어떻게 하는 것이 좋을까요?
 
-시야는 곧 빛줄기죠. 벽을 탐지하기 위해 빛줄기를 쏘아 보내면서 격자와의 교점들을 검사하던 시절이 있었습니다. [The Wall](Ray-casting%202%20The%20Wall%2030079ca7accb4b9c96e38998b29b2b15.md) 에서였던가요.. 그 검사를 하면서, 빛줄기가 지나는 셀마다 "얘는 눈에 보임"이라는 표시를 달면 되지 않을까요? 그러면 SX 개의 빛줄기가 모두 발사된 후에, 어떤 셀이 시야 범위에 있는지가 드러날 겁니다.
+시야는 곧 빛줄기죠. 벽을 탐지하기 위해 빛줄기를 쏘아 보내면서 격자와의 교점들을 검사하던 시절이 있었습니다. [The Wall](02_The_Wall.md) 에서였던가요.. 그 검사를 하면서, 빛줄기가 지나는 셀마다 "얘는 눈에 보임"이라는 표시를 달면 되지 않을까요? 그러면 SX 개의 빛줄기가 모두 발사된 후에, 어떤 셀이 시야 범위에 있는지가 드러날 겁니다.
 
 또 다른 고려사항으로는 스프라이트끼리의 원근관계가 있습니다. 시선 방향 쪽으로 여러 개의 스프라이트가 겹친다면, 가까이 있는 것이 더 멀리 있는 것을 가려야 합니다. 예컨대 위 그림에서는 플레이어 바로 앞에 놓인 `4`번 스프라이트 때문에 뒤쪽의 다른 스프라이트들이 (아마도 `2`로 표시된 것들이) 일부건 전부건 가려져야 하겠죠.
 
@@ -55,7 +51,7 @@
 
 아래 그림처럼 중심점이 *S* 로 표시된 스프라이트 하나가 시야각의 왼쪽 경계 근처에 걸쳐 있는 상황을 가정해 보겠습니다. 스프라이트는 셀의 중앙에 위치한다고 보는 것이 합리적이므로, 맵 상의 좌표는 항상 (x.5, x.5) 형태겠죠. 두 점의 좌표를 아니까 플레이어 위치 *P* 에서 *S* 까지의 거리가 바로 나오고, 거리를 알면 스프라이트의 높이(=너비) 또한 벽 계산할 때처럼 쉽게 얻을 수 있습니다.
 
-![Ray-casting%207%20The%20Sprite%20f7e4cd28a6024d5fa7b0b6bc2089788d/sprite1.png](Ray-casting%207%20The%20Sprite%20f7e4cd28a6024d5fa7b0b6bc2089788d/sprite1.png)
+![](images/sprite1.png)
 
 스프라이트를 어떤 크기로 화면에 그려야 할지 알았으니, 화면 어디쯤에 놓을 것인지만 정하면 되겠네요. 이건 그림에서 선분 *PS* 가 시선방향에 대해 얼마의 각도로 벌어져 있는가를 알아내는 것과도 같습니다. 맵에서 수평시야각 FOV_H에 해당하는 화면 상의 픽셀 개수가 `SX`이니까, 스프라이트의 위치를 각도로 알면 화면에서 어디에 그릴지가 나오죠.
 
@@ -64,20 +60,20 @@
 다시 삼각함수를 출동시켜 봅니다. 위의 그림처럼, *P* 와 *S* 좌표간의 차이를 각각 Δ*x* 및 Δ*y* 라 두면, 탄젠트의 정의에 의해 다음이 성립합니다.
 
 $$
-\displaystyle \tan\gamma \,=\, \frac{\Delta y}{\Delta x}
+\displaystyle \tan\gamma \ =\  \frac{\Delta y}{\Delta x}
 $$
 
 아. 탄젠트의 역함수를 쓰면 각 *γ* 가 나오겠군요.
 
 $$
-\displaystyle \gamma \,=\, \arctan \left( \frac{\Delta y}{\Delta x} \right)
+\displaystyle \gamma \ =\  \arctan \left( \frac{\Delta y}{\Delta x} \right)
 $$
 
 아크탄젠트 값을 제대로 구하려면, <math.h> 에서 제공하는 `atan2(y, x)` 함수를 써야 합니다. 왜 (Δ*y /* Δ*x*)라는 값 1개만으로 구하지 않고 굳이 2변수 함수를 쓰는지는.. 설명이 좀 길어져서.. 인터넷 검색을 추천합니다.
 
 이제 원하는 각 (*γ* - *θ*) 의 크기를 구했으니, 스프라이트를 화면에 위치시켜 볼까요. 시선방향 기준으로 벌어진 각도를 알 때 화면상의 위치는, 아래 그림을 참고해서 간단한 일차식으로 구할 수 있습니다. 계산은 직접 해 보시는 게 좋겠네요.
 
-![Ray-casting%207%20The%20Sprite%20f7e4cd28a6024d5fa7b0b6bc2089788d/sprite2.png](Ray-casting%207%20The%20Sprite%20f7e4cd28a6024d5fa7b0b6bc2089788d/sprite2.png)
+![](images/sprite2.png)
 
 # 스프라이트: 비트맵 찍기
 
@@ -85,7 +81,7 @@ $$
 
 다만 이때 주의할 점이 하나 있습니다. 우리는 지금 벽, 바닥, 천정이 모두 그려진 위에다가 스프라이트를 그리고 있는데요. 벽 가장자리에 걸쳐 있는 스프라이트들이 문제가 됩니다. 이 때는 벽에 가리지 않는 부분만 비트맵을 그려 줘야 합니다. 아래 스샷에 나온 식탁을, 전체를 그리면 안 되고 벽에 가려지지 않은 부분만 그려야 한다는 거죠!
 
-![Ray-casting%207%20The%20Sprite%20f7e4cd28a6024d5fa7b0b6bc2089788d/_2021-02-05__2.06.45.png](Ray-casting%207%20The%20Sprite%20f7e4cd28a6024d5fa7b0b6bc2089788d/_2021-02-05__2.06.45.png)
+![](images/_2021-02-05__2.06.45.png)
 
 이처럼 스프라이트의 비트맵은 (벽 그릴 때처럼) 세로선 하나하나가 정말로 눈에 보이는지 일일이 따져야 합니다. 하지만 다행히 이건 별로 어렵지 않습니다. 스프라이트 세로선 하나가 벽의 뒤에 가렸는지 아닌지 알기 위해서는, 그 전에 벽을 그릴 때 "화면의" 각 *x* 좌표에 대해서 "해당 벽 세로선까지의 거리"를 미리 기록해두고 그걸 참조하면 됩니다 (이걸 [Z-buffering](https://ko.wikipedia.org/wiki/Z_버퍼링)이라고 부르는 모양입니다). 그러니까 화면상의 해당 *x* 좌표에서 스프라이트보다 벽이 더 가깝다면 그냥 넘어가는 거죠.
 
@@ -242,16 +238,15 @@ draw_sprites( void* gr, player_t* pp, int** vis, double zbuf[SX] )
 
 자.. 스샷 한번 보고 가실께요..
 
-![Ray-casting%207%20The%20Sprite%20f7e4cd28a6024d5fa7b0b6bc2089788d/_2021-02-05__3.26.05.png](Ray-casting%207%20The%20Sprite%20f7e4cd28a6024d5fa7b0b6bc2089788d/_2021-02-05__3.26.05.png)
+![](images/_2021-02-05__3.26.05.png)
 
-![Ray-casting%207%20The%20Sprite%20f7e4cd28a6024d5fa7b0b6bc2089788d/_2021-02-05__3.28.32.png](Ray-casting%207%20The%20Sprite%20f7e4cd28a6024d5fa7b0b6bc2089788d/_2021-02-05__3.28.32.png)
+![](images/_2021-02-05__3.28.32.png)
 
 드디어 스프라이트까지 다 그렸습니다. 더 해볼만한 꺼리를 찾으려면 계속 찾아지겠지만, 어쨌거나 매듭은 한번 지어야죠. 이것으로 레이-캐스팅 구현은 마무리 하겠습니다. 🎉🎉🎉
 
 긴 글 읽어주셔서 고맙습니다.
 
-[Ray-casting 6: The Floor](Ray-casting%206%20The%20Floor%200bc5fd1bd4d0435ca60bdd7034dab2fb.md)
+&#8592; [Ray-casting 6: The Floor](06_The_Floor.md)
 
-[Ray-casting sample run (GIF)](Ray-casting%20sample%20run%20(GIF)%20edf88a5e1cac4b71b0e8b44803646274.md)
+&#8594; [Ray-casting sample run (GIF)](0x_Sample_Run.md)
 
-[https://notion-ga.ohwhos.now.sh/collect?tid=UA-188421268-1&host=notion.so&page=/Ray-casting-7-The-Sprite-f7e4cd28a6024d5fa7b0b6bc2089788d](https://notion-ga.ohwhos.now.sh/collect?tid=UA-188421268-1&host=notion.so&page=/Ray-casting-7-The-Sprite-f7e4cd28a6024d5fa7b0b6bc2089788d)

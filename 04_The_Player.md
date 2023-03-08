@@ -1,12 +1,8 @@
 # Ray-casting 4: The Player
 
-~ Joongbin's [Math Reboot](https://blog.insightbook.co.kr/2020/07/01/《수학-리부트-프로그래머를-위한-기초-수학》/) on Notion ~
+~ Joongbin's [Math Reboot](https://blog.insightbook.co.kr/2020/07/01/《수학-리부트-프로그래머를-위한-기초-수학》/) ~
 
-~ [삼각함수, 벡터 관련 유튜브 강의 클립!](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
-
-![            [이노베이션아카데미](https://innovationacademy.kr)](innoaca_logo_1.png)
-
-            [이노베이션아카데미](https://innovationacademy.kr)
+~ [삼각함수, 벡터 관련 유튜브 강의 클립](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
 
 이제 시점을 움직여 가며 던전을 탐험할 시간입니다! 플레이어의 움직임은 아래의 두 종류를 가정하겠습니다.
 
@@ -17,28 +13,28 @@
 
 WASD 이동의 경우는 약간의 산수가 필요합니다. 먼저, 앞 글의 어디선가 단위원과 함께 언급했던 삼각함수의 정의를 조금 확장해 보겠습니다. 원점 *O* 에서 거리 *r* 만큼 떨어진 점 *P* 가 있고, *OP* 가 *x* 축과 이루는 각이 *θ* 이라면, 이 점의 좌표를 (*r* cos *θ*, *r* sin *θ*) 처럼 쓸 수 있습니다. 이건 피타고라스 정리로도 증명이 됩니다 (sin² *θ* + cos² *θ* = 1).
 
-![Ray-casting%204%20The%20Player%20c8037c98c45840a484f80df3436fb139/r-cos-th.png](Ray-casting%204%20The%20Player%20c8037c98c45840a484f80df3436fb139/r-cos-th.png)
+![](images/r-cos-th.png)
 
 이제 플레이어가 (px, py)에 있고 시선방향각이 *θ* 일 때, '앞쪽'으로 *m* 만큼 움직이려 합니다.
 
-![Ray-casting%204%20The%20Player%20c8037c98c45840a484f80df3436fb139/move_fwd.png](Ray-casting%204%20The%20Player%20c8037c98c45840a484f80df3436fb139/move_fwd.png)
+![](images/move_fwd.png)
 
 그러면 *x* 축과 *y* 축 방향으로 이동해야 할 거리는 각각 dx = *m* cos *θ*, dy = *m* sin *θ* 처럼 쓸 수 있겠죠. 따라서 이동 후의 좌표 (nx, ny)는 현재 위치의 좌표 (px, py)에다가 (dx, dy)만큼을 더한 것과 같습니다. 반대로 뒷걸음질 칠 때는 현재 좌표에서 (dx, dy)만큼을 각각 빼 주면 됩니다.
 
 이 두 경우를 수식으로 써 봅니다. 복부호(±) 중 + 부호는 W키, - 부호는 S키에 해당합니다.
 
 $$
-\left\{ \begin{array}{l} \text{nx} \,=\, \text{px} \,\pm\, m \cos\theta \\ \text{ny} \,=\, \text{py} \,\pm\, m \sin\theta \end{array} \right.
+\left\{ \begin{array}{l} \text{nx} \ =\  \text{px} \ \pm\  m \cos\theta \\\\ \text{ny} \ =\  \text{py} \ \pm\  m \sin\theta \end{array} \right.
 $$
 
 그렇다면, 옆으로 게걸음 하는 경우는 어떨까요?
 
-![Ray-casting%204%20The%20Player%20c8037c98c45840a484f80df3436fb139/sidewalk.png](Ray-casting%204%20The%20Player%20c8037c98c45840a484f80df3436fb139/sidewalk.png)
+![](images/sidewalk.png)
 
 그림에서 알 수 있듯이, 이 게걸음은 앞뒤로 움직일 때와 기본적으로 같고 방향만 90° 차이납니다. A키를 누르면 *θ* + 90° 에 해당하는 방향으로, D키를 누르면 *θ -* 90° 방향으로 *m* 만큼 이동하면 됩니다.
 
 $$
-\left\{ \begin{array}{l} \text{nx} \,=\, \text{px} \,+\, m \cos \,(\theta \pm 90^{\circ}) \\ \text{ny} \,=\, \text{py} \,+\, m \sin \,(\theta \pm 90^{\circ}) \end{array} \right.
+\left\{ \begin{array}{l} \text{nx} \ =\  \text{px} \ +\  m \cos \ (\theta \pm 90^{\circ}) \\\\ \text{ny} \ =\  \text{py} \ +\  m \sin \ (\theta \pm 90^{\circ}) \end{array} \right.
 $$
 
 지금까지 본 내용을 코드에 실제로 반영해 보겠습니다.
@@ -182,10 +178,9 @@ player_move( player_t* pp, int key, double amt )
 
 이렇게 만든 코드를 돌려 보았습니다. 좀 어지럽지만... 이제야 뭔가 게임 느낌이 나는군요!
 
-![Ray-casting%204%20The%20Player%20c8037c98c45840a484f80df3436fb139/ex03-run.gif](Ray-casting%204%20The%20Player%20c8037c98c45840a484f80df3436fb139/ex03-run.gif)
+![](images/ex03-run.gif)
 
-[Ray-casting 3: The Height](Ray-casting%203%20The%20Height%20421cb7ed93524f29bfab22ffd380dbb5.md)
+&#8592; [Ray-casting 3: The Height](03_The_Height.md)
 
-[Ray-casting 5: The Texture (feat. Lumi)](Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da.md)
+&#8594; [Ray-casting 5: The Texture](05_The_Texture.md)
 
-[https://notion-ga.ohwhos.now.sh/collect?tid=UA-188421268-1&host=notion.so&page=/Ray-casting-4-The-Player-c8037c98c45840a484f80df3436fb139](https://notion-ga.ohwhos.now.sh/collect?tid=UA-188421268-1&host=notion.so&page=/Ray-casting-4-The-Player-c8037c98c45840a484f80df3436fb139)

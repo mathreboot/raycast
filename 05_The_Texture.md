@@ -1,12 +1,8 @@
 # Ray-casting 5: The Texture (feat. Lumi)
 
-~ Joongbin's [Math Reboot](https://blog.insightbook.co.kr/2020/07/01/《수학-리부트-프로그래머를-위한-기초-수학》/) on Notion ~
+~ Joongbin's [Math Reboot](https://blog.insightbook.co.kr/2020/07/01/《수학-리부트-프로그래머를-위한-기초-수학》/) ~
 
-~ [삼각함수, 벡터 관련 유튜브 강의 클립!](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
-
-![            [이노베이션아카데미](https://innovationacademy.kr)](innoaca_logo_1.png)
-
-            [이노베이션아카데미](https://innovationacademy.kr)
+~ [삼각함수, 벡터 관련 유튜브 강의 클립](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
 
 앞 글에서 플레이어의 움직임에 따라 단색으로나마 벽을 그려 보았습니다. 큰 맵에다가 여기저기 벽을 만들고 돌아다니는 것도 나름 중독성 있죠... 하지만 벽이 너무 밋밋하네요. 알록달록한 텍스쳐를 입혀 보기로 합니다.
 
@@ -16,7 +12,7 @@
 
 그렇게 세로줄로 벽을 그린다면, 그 줄이 텍스쳐에는 어디쯤 대응되는지 - 즉 텍스쳐 비트맵의 어느 세로줄에 대응되는지 계산하면 되지 않을까요? 예를 들어 아래 왼쪽 그림처럼 어떤 벽 하나를 그리는데, 저 빨간색으로 표시한 부분의 세로줄을 막 그릴 참이라고 하겠습니다.
 
-![Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/texture1.png](Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/texture1.png)
+![](images/texture1.png)
 
 이 상황을 가운데 그림처럼 맵 좌표로 생각해 보죠. 위에서 본 그림입니다. 빛줄기가 벽에 닿는 교점 (wx, wy)를 앞 글에서는 직선의 함숫값으로 얻어냈습니다. 빛줄기가 벽을 친 방향은 아래 → 위라 가정하고요. 이때 예를 들어 교점의 *x* 좌표값 `wx`가 7.35 라고 하면, 해당 셀 왼쪽 경계선의 *x* 좌표는 7이 됩니다. 맵의 격자 경계선은 좌표가 모두 정수니까요. 그리고 이건 7.35에서 소숫점 이하를 떼어 버린 ⌊7.35⌋= 7, 즉  `floor(wx)`와도 같습니다.
 
@@ -24,7 +20,7 @@
 
 하지만 맵에서 좌 → 우 또는 우 → 좌 처럼 빛줄기가 벽의 옆구리를 쳤다면 계산이 조금 달라져야 합니다. 이때는 교점의 *x* 좌표가 아니라 *y* 좌표를 봐야 할 테고, 식으로 쓰면 `wy - floor(wy)`가 됩니다. 맵 좌표에서는 위로 가면서 *y* 좌표값이 증가하죠.
 
-![Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/texture2.png](Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/texture2.png)
+![](images/texture2.png)
 
 참고로, 여기까지 wx 나 wy 를 설명하던 그림들은 모두 지형을 위에서 본, 맵 관점이라는 것에 유의할 필요가 있습니다.
 
@@ -34,7 +30,7 @@
 
 tx와 ty가 정해졌으므로, 드디어 텍스쳐 비트맵에서 (tx, ty) 위치에 있는 픽셀의 색상 값을 얻어옵니다. 이게 바로 지금 화면에 해당 텍스쳐를 나타내기 위해 찍어야 할 점의 색상이죠. 아래 그림이 지금까지의 내용을 나타내고 있습니다.
 
-![Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/texture3.png](Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/texture3.png)
+![](images/texture3.png)
 
 물론 이 비트맵들은 화면 바깥의 것들은 제외하고 화면 안에 들어오는 경우만 처리합니다.
 
@@ -82,7 +78,7 @@ int gr_putpixel( void*, int x, int y, int color );
 
 실행해 보면 이런 화면이 나옵니다. 단색으로 그릴 때보다 뭔가 더 있어 보이네요. 천정과 바닥이 새까만 것이 눈에 거슬리지만, 이건 다음 글에서 잘 칠해 보도록 하겠습니다.
 
-![Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/_2021-01-29__11.40.55.png](Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/_2021-01-29__11.40.55.png)
+![](images/_2021-01-29__11.40.55.png)
 
 # The Luminosity
 
@@ -129,16 +125,15 @@ fade_color( int color, double lum )
 
 아래는 단색으로 그린 경우의 스크린샷입니다.
 
-![Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/lum-notexture.png](Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/lum-notexture.png)
+![](images/lum-notexture.png)
 
 이건 텍스쳐를 입혔을 때입니다. 조금 더 그럴듯해졌군요.
 
-![Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/lum-texture.png](Ray-casting%205%20The%20Texture%20(feat%20Lumi)%20a800b9dff5774f83a5a11e8eb94e84da/lum-texture.png)
+![](images/lum-texture.png)
 
 다음은, 천정과 바닥 차례입니다.
 
-[Ray-casting 4: The Player](Ray-casting%204%20The%20Player%20c8037c98c45840a484f80df3436fb139.md)
+&#8592; [Ray-casting 4: The Player](04_The_Player.md)
 
-[Ray-casting 6: The Floor](Ray-casting%206%20The%20Floor%200bc5fd1bd4d0435ca60bdd7034dab2fb.md)
+&#8594; [Ray-casting 6: The Floor](06_The_Floor.md)
 
-[https://notion-ga.ohwhos.now.sh/collect?tid=UA-188421268-1&host=notion.so&page=/Ray-casting-5-The-Texture-a800b9dff5774f83a5a11e8eb94e84da](https://notion-ga.ohwhos.now.sh/collect?tid=UA-188421268-1&host=notion.so&page=/Ray-casting-5-The-Texture-a800b9dff5774f83a5a11e8eb94e84da)
