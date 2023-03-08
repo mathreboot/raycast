@@ -77,5 +77,5 @@ $$
 
 그럼, 빛을 발사해서 벽을 찾아 볼까요.
 
-&#8592; [Ray-casting 2: The Wall](02_The_Wall.md)
+&#8594; [Ray-casting 2: The Wall](02_The_Wall.md)
 

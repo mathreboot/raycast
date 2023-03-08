@@ -147,13 +147,13 @@ draw_wall( void* gr, double wdist, int x, int color )
 
 이렇게 해서 정말 벽이 그려지냐고요? 맵의 가운데 공간만 조금 늘리고 이리저리 위치를 바꿔가며 이 코드를 실행시킨 스크린샷이 아래에 있습니다.
 
-![](images/_2021-01-26__3.26.25.png)
+<img src="images/_2021-01-26__3.26.25.png" width="20%" height="20%">
 
-![](images/_2021-01-26__3.26.49.png)
+<img src="images/_2021-01-26__3.26.49.png" width="20%" height="20%">
 
-![](images/_2021-01-26__3.27.46.png)
+<img src="images/_2021-01-26__3.27.46.png" width="20%" height="20%">
 
-![](images/_2021-01-26__4.28.46.png)
+<img src="images/_2021-01-26__4.28.46.png" width="20%" height="20%">
 
 # 거리 보정
 
@@ -189,9 +189,9 @@ cast_single_ray( int x, double px, double py, double th, dir_t* pdir )
 
 그 결과는 아래와 같습니다. 아까 것과 비교해 보죠. 코사인 하나 곱했을 뿐인데...
 
-![](/_2021-01-26__5.22.50.png)
+<img src="images/_2021-01-26__5.22.50.png" width="20%" height="20%">
 
-![](/_2021-01-26__5.23.15.png)
+<img src="images/_2021-01-26__5.23.15.png" width="20%" height="20%">
 
 다음 글에서는 키보드로 플레이어의 위치와 방향을 바꿔 가면서 다이나믹하게 화면을 그려 보겠습니다.
 

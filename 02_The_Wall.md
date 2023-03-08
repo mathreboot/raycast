@@ -33,7 +33,7 @@
 또는, 결과적으로 같은 말이지만 *y* = *ax* + *b* 에서 *x* 와 *y* 의 입장을 바꾼 역함수를 가지고 함숫값으로 구해도 되겠고요.
 
 $$
-\displaystyle x \,=\, g(y) \,=\, \small\frac{1}{\,a\,}\normalsize (y-b)
+\displaystyle x \ =\  g(y) \ =\  \small\frac{1}{\ a\ }\normalsize (y-b)
 $$
 
 그렇게 역함수로 보면 *y* = 1, 2, 3, ⋯ 에 해당하는 가로선들과 빛줄기의 교점은 (*g*(1), 1), (*g*(2), 2), (*g*(3), 3), ⋯ 이라는 것을 알 수 있습니다. 세로선 때와 반대로 *y* 값이 1, 2, 3으로 먼저 정해지고 거기에 따라서 *x* 좌표가 g(1), g(2), g(3)으로 결정되는 거죠. 또, 역함수 입장에서 봤을 때 이 빛줄기의 기울기는 일차항의 계수, 즉 1/*a* = 1/tan *θ* 로 구해집니다. *x*축과 *y*축의 역할이 바뀌니까요.
@@ -43,7 +43,7 @@ $$
 일단 기울기는 tan 40° ≅ 0.839 정도가 되겠죠. 기울기가 *a* 이면서 한 점 (*p*, *q*)를 지나는 직선의 방정식이 아래와 같다는 점을 이용하면, 빛줄기의 식을 쉽게 구할 수 있습니다 (아래쪽은 역함수 꼴).
 
 $$
-\begin{array}{l} y  =  a(x-p)+q \\\\[3pt] x  = \frac{1}{\,a\,} (y-q) + p \end{array}
+\begin{array}{l} y  =  a(x-p)+q \\\\[3pt] x  = \frac{1}{\ a\ } (y-q) + p \end{array}
 $$
 
 ![](images/f1.png)
@@ -211,7 +211,7 @@ main( int ac, char** av )
 일단 `ray`라는 변수의 값은 현재의 `x`값에 따른 빛줄기의 각도를 앞 글에서 설명한 그대로 계산하고 있습니다. `ANGLE_PER_PIXEL` 역시 앞서 설명한 대로 FOV_H / (SX-1) 을 뜻합니다.
 
 $$
-\displaystyle \text{ray}(x)  =  \left(\! \theta + \frac{\text{FOV}_\text{H}}{2} \!\right) - \left( \frac{\text{FOV}_\text{H}}{\text{SX}\!-\!1} \right) \times  x
+\displaystyle \text{ray}(x)  =  \left(  \theta + \frac{\text{FOV}_\text{H}}{2}  \right) - \left( \frac{\text{FOV}_\text{H}}{\text{SX} - 1} \right) \times  x
 $$
 
 그리고 정작 중요한 교점 계산은 다시 `get_wall_intersection()` 이라는 함수를 호출하는군요. 이 함수를 호출할 때는 빛줄기 각도 ray와 플레이어의 위치 px 및 py를 입력으로 주고, 출력으로는 벽에 닿은 맵 상의 위치 wx 및 wy, 벽에 닿은 방향 wdir의 값을 받아옵니다.
