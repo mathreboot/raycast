@@ -1,7 +1,10 @@
 # 고1 수학으로 레이-캐스팅
 
-온라인 서점의 IT분야 코너를 뒤적이던 어느 날, 심상치 않은 포스를 풍기는 책 한 권이 눈에 들어왔습니다.
+~ Joongbin's [Math Reboot](https://blog.insightbook.co.kr/2020/07/01/《수학-리부트-프로그래머를-위한-기초-수학》/) on Notion ~
 
+~ [삼각함수, 벡터 관련 유튜브 강의 클립](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
+
+온라인 서점의 IT분야 코너를 뒤적이던 어느 날, 심상치 않은 포스를 풍기는 책 한 권이 눈에 들어왔습니다.
 
 <img src="images/wolfen3d_book.png" width="20%" height="20%">
 
@@ -46,4 +49,14 @@ Permadi 자료는 1996년(!!)산이고 구체적인 코드가 아니라 pseudo-c
 레이캐스팅 구현에 굳이 기벡까지 동원할 필요는 없을 거라는 느낌적 느낌이 드네요. 일단은 ’블랙 북’과 Permadi 자료를 참고해서, 원래 울펜3D가 그랬던 것처럼 C 언어로 이 레이캐스팅이란 것을 만들어 볼까 합니다. 왠지 간만에 재밌을 것 같은 예감이 드는군요..!
 
 이후의 글에서는 아래와 같은 스펙의 레이캐스팅을 구현하면서, 겉으로 보이는 코드 뒤의 '실체적 진실'이라 할 수 있는 수학적 배경을 함께 짚어 보려고 합니다.
+
+
+- [Ray-casting 1: The World](01_The_World.md)
+- [Ray-casting 2: The Wall](02_The_Wall.md)
+- [Ray-casting 3: The Height](03_The_Height.md)
+- [Ray-casting 4: The Player](04_The_Player.md)
+- [Ray-casting 5: The Texture (feat. Lumi)](05_The_Texture.md)
+- [Ray-casting 6: The Floor](06_The_Floor.md)
+- [Ray-casting 7: The Sprite](07_The_Sprite.md)
+- [Ray-casting sample run (GIF)](0x_Sample_Run.md)
 

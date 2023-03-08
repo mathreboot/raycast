@@ -1,5 +1,8 @@
 # Ray-casting 1: The World
 
+~ Joongbin's [Math Reboot](https://blog.insightbook.co.kr/2020/07/01/《수학-리부트-프로그래머를-위한-기초-수학》/) on Notion ~
+
+~ [삼각함수, 벡터 관련 유튜브 강의 클립](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
 *Lorem ipsum dolor sit amet* ! (...)
 
 손을 뻗어 주문을 외치며 온 사방에 ~~Rei~~ Ray를 뿌려대기 전에, 우선은 우리가 레이캐스팅으로 나타내려는 이 소박한 가상세계의 모습을 미리 좀 정해둘 필요가 있습니다. 이를테면 모든 벽은 같은 크기의 정육면체(cube)로 되어 있다는 등등의 설정이죠.
@@ -60,18 +63,18 @@ $$
 따라서 SX개의 빛줄기 중 *x*번째가 이루는 각의 크기는, 시야각의 좌측 끝단 *θ* + FOV_H / 2 를 기준으로 해서, *x*가 증가하는 만큼 - 즉 시계방향으로 가는 만큼 - 각도를 빼 주면 됩니다. 이것을 수식으로는 아래처럼 쓸 수 있습니다. 물론 이때 *x*는 0 ~ (SX-1) 범위의 정수입니다.
 
 $$
-\displaystyle \text{ray}(x) \ =\  \left(\! \theta + \frac{\text{FOV}_\text{H}}{2} \!\right) - \left( \frac{\text{FOV}_\text{H}}{\text{SX}\!-\!1} \right) \times\  x
+\displaystyle \text{ray}(x) \ =\  \left( \theta + \frac{\text{FOV}_\text{H}}{2} \right) - \left( \frac{\text{FOV}_\text{H}}{\text{SX}-1} \right) \times\  x
 $$
 
 실제 예를 들어서 위의 식이 어떤 모양이 되나 한번 보죠. 화면 해상도 720 x 480 에 시야각 60° 일 때, 플레이어가 맵의 위쪽을 보는 중이라고 하겠습니다 (즉 *θ* = 90°). 그러면 720개 중 *x*번째의 빛줄기가 수평축에 대해 이루는 각은 다음과 같이 계산됩니다. 좌측 끝단 즉 *x* = 0 일 때 ray(*x*) 값은 120°이고, 우측 끝단 *x* = 719 일 때는 60°가 되네요. 맞는 것 같습니다.
 
 $$
-\displaystyle \text{ray}(x) \ =\  ( 90^{\circ} \! + 30^{\circ} ) \,-\, \left( \frac{\,60^{\circ}}{719} \right) \times x
+\displaystyle \text{ray}(x) \ =\  ( 90^{\circ}  + 30^{\circ} ) \ -\  \left( \frac{\ 60^{\circ}}{719} \right) \times x
 $$
 
 이제 코드 작성에 들어가기 전에, 화면 출력을 위해 어떤 라이브러리를 쓸 것인가를 정해야 하는데요, 필요한 기능이라 해봐야 '점 찍기' 정도라서… 간단히 쓸 수 있는 [SDL](https://www.libsdl.org/)로 낙점하려 합니다. 아, 키 입력 처리도 필요하겠군요.
 
 그럼, 빛을 발사해서 벽을 찾아 볼까요.
 
-[Ray-casting 2: The Wall](02_The_Wall.md)
+&#8678; [Ray-casting 2: The Wall](02_The_Wall.md)
 
