@@ -1,5 +1,8 @@
 # Ray-casting 2: The Wall
 
+~ Joongbin's [Math Reboot](https://blog.insightbook.co.kr/2020/07/01/《수학-리부트-프로그래머를-위한-기초-수학》/) ~
+
+~ [삼각함수, 벡터 관련 유튜브 강의 클립](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
 
 (빛줄기로도 치유되지 않는 꿀꿀함이 내려앉는 날에는, “[Run Like Hell](https://youtu.be/j2s8yGMEbSs)”을 크게 틀어 보아요)
 
@@ -331,7 +334,7 @@ get_wall_intersection( double ray, double px, double py, dir_t* wdir, double* wx
 
 위 코드를 컴파일할 때는 C math library 정도만 `-lm` 으로 같이 링크해 주면 됩니다. 실행을 시키면 아래에서 보듯이 벽에 닿을 때까지 빛을 전진시키면서 어느쪽 방향의 격자선에 (V/H로 표시) 부딪혔는지 좌표와 함께 출력합니다. 프로그램의 동작 이해를 위해 인자 값이나 맵의 내용 등을 이리저리 바꿔 가면서 실험해 보는 것도 좋겠네요.
 
-```bash
+```
 shell $ cc -o ex01 -Wall ex01.c -lm
 shell $ ./ex01 1.5 3.5 355
 # # # # # #
@@ -355,7 +358,7 @@ ray=350.00 deg, xstep=1, ystep=-1, xslope=-0.18, yslope=-5.67, nx=2.00, ny=3.00
 
 다음 글에서는 이렇게 알아낸 벽의 모습을 실제로 화면 상에 그려 보겠습니다.
 
-[Ray-casting 1: The World](01_The_World.md)
+&#8592; [Ray-casting 1: The World](01_The_World.md)
 
-[Ray-casting 3: The Height](03_The_Height.md)
+&#8594; [Ray-casting 3: The Height](03_The_Height.md)
 
