@@ -4,6 +4,7 @@
 
 ~ [삼각함수, 벡터 관련 유튜브 강의 클립](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
 
+
 앞 글에서 플레이어의 움직임에 따라 단색으로나마 벽을 그려 보았습니다. 큰 맵에다가 여기저기 벽을 만들고 돌아다니는 것도 나름 중독성 있죠... 하지만 벽이 너무 밋밋하네요. 알록달록한 텍스쳐를 입혀 보기로 합니다.
 
 원래 울펜3D에 사용된 텍스쳐는 돌벽이나 나무판자 등의 모양이고, 아직 저작권이 걸려 있긴 하지만 인터넷에서 쉽게 찾을 수 있습니다. 이 텍스쳐들은 모두 64 x 64 크기인데, 이런 비트맵을 벽에 입히려면 어떻게 해야 할까요?
@@ -78,7 +79,7 @@ int gr_putpixel( void*, int x, int y, int color );
 
 실행해 보면 이런 화면이 나옵니다. 단색으로 그릴 때보다 뭔가 더 있어 보이네요. 천정과 바닥이 새까만 것이 눈에 거슬리지만, 이건 다음 글에서 잘 칠해 보도록 하겠습니다.
 
-![](images/_2021-01-29__11.40.55.png)
+<img src="images/_2021-01-29__11.40.55.png" width="50%" height="50%">
 
 # The Luminosity
 
@@ -125,11 +126,11 @@ fade_color( int color, double lum )
 
 아래는 단색으로 그린 경우의 스크린샷입니다.
 
-![](images/lum-notexture.png)
+<img src="images/lum-notexture.png" width="50%" height="50%">
 
 이건 텍스쳐를 입혔을 때입니다. 조금 더 그럴듯해졌군요.
 
-![](images/lum-texture.png)
+<img src="images/lum-texture.png" width="50%" height="50%">
 
 다음은, 천정과 바닥 차례입니다.
 

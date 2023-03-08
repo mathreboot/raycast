@@ -4,6 +4,7 @@
 
 ~ [삼각함수, 벡터 관련 유튜브 강의 클립](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
 
+
 (빛줄기로도 치유되지 않는 꿀꿀함이 내려앉는 날에는, “[Run Like Hell](https://youtu.be/j2s8yGMEbSs)”을 크게 틀어 보아요)
 
 # 빛과 벽이 만나는 곳

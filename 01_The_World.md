@@ -4,6 +4,7 @@
 
 ~ [삼각함수, 벡터 관련 유튜브 강의 클립](https://www.youtube.com/channel/UC3oEhf5Q1WxgwK44Tc80RLw/playlists) ~
 
+
 *Lorem ipsum dolor sit amet* ! (...)
 
 손을 뻗어 주문을 외치며 온 사방에 ~~Rei~~ Ray를 뿌려대기 전에, 우선은 우리가 레이캐스팅으로 나타내려는 이 소박한 가상세계의 모습을 미리 좀 정해둘 필요가 있습니다. 이를테면 모든 벽은 같은 크기의 정육면체(cube)로 되어 있다는 등등의 설정이죠.
