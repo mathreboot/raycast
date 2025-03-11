@@ -24,9 +24,9 @@ WASD 이동의 경우는 약간의 산수가 필요합니다. 먼저, 앞 글의
 
 이 두 경우를 수식으로 써 봅니다. 복부호(±) 중 + 부호는 W키, - 부호는 S키에 해당합니다.
 
-$$
-\left\{ \begin{array}{l} \text{nx} \ =\  \text{px} \ \pm\  m \cos\theta \\\\ \text{ny} \ =\  \text{py} \ \pm\  m \sin\theta \end{array} \right.
-$$
+```math
+\left\{ \ \begin{array}{l} \text{nx} \ =\  \text{px} \ \pm\  m \cos\theta \\\\ \text{ny} \ =\  \text{py} \ \pm\  m \sin\theta \end{array}  \right.
+```
 
 그렇다면, 옆으로 게걸음 하는 경우는 어떨까요?
 
@@ -34,9 +34,9 @@ $$
 
 그림에서 알 수 있듯이, 이 게걸음은 앞뒤로 움직일 때와 기본적으로 같고 방향만 90° 차이납니다. A키를 누르면 *θ* + 90° 에 해당하는 방향으로, D키를 누르면 *θ -* 90° 방향으로 *m* 만큼 이동하면 됩니다.
 
-$$
-\left\{ \begin{array}{l} \text{nx} \ =\  \text{px} \ +\  m \cos \ (\theta \pm 90^{\circ}) \\\\ \text{ny} \ =\  \text{py} \ +\  m \sin \ (\theta \pm 90^{\circ}) \end{array} \right.
-$$
+```math
+\left\{ \ \begin{array}{l} \text{nx} \ =\  \text{px} \ +\  m \cos (\theta \pm 90^{\circ}) \\\\ \text{ny} \ =\  \text{py} \ +\  m \sin (\theta \pm 90^{\circ}) \end{array} \right.
+```
 
 지금까지 본 내용을 코드에 실제로 반영해 보겠습니다.
 
